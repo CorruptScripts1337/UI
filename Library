@@ -982,23 +982,28 @@ function Luxt1.CreateWindow(libName, logoId)
                             end
 
                             function ItemHandling:Label(labelInfo)
+                                labelInfo = labelInfo or "Text Label"
+                            
+                                -- Create the TextLabelFrame and its components
                                 local TextLabelFrame = Instance.new("Frame")
                                 local UIListLayout = Instance.new("UIListLayout")
                                 local TextLabel = Instance.new("TextLabel")
                                 local UICorner = Instance.new("UICorner")
-                                labelInfo = labelInfo or "Text Label"
                             
+                                -- Configure the TextLabelFrame
                                 TextLabelFrame.Name = "TextLabelFrame"
                                 TextLabelFrame.Parent = sectionFrame
                                 TextLabelFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
                                 TextLabelFrame.BackgroundTransparency = 1.000
                                 TextLabelFrame.Size = UDim2.new(0, 365, 0, 36)
                             
+                                -- Configure the UIListLayout
                                 UIListLayout.Parent = TextLabelFrame
                                 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
                                 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                                 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
                             
+                                -- Configure the TextLabel
                                 TextLabel.Parent = TextLabelFrame
                                 TextLabel.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
                                 TextLabel.Size = UDim2.new(0, 365, 0, 36)
@@ -1008,17 +1013,20 @@ function Luxt1.CreateWindow(libName, logoId)
                                 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                                 TextLabel.TextSize = 14.000
                             
+                                -- Configure the UICorner
                                 UICorner.CornerRadius = UDim.new(0, 5)
                                 UICorner.Parent = TextLabel
                             
-                                local labelObject = {}
-                            
-                                function labelObject:Set(newText)
-                                    TextLabel.Text = newText
-                                end
+                                -- Define the Set method to update the label's text
+                                local labelObject = {
+                                    Set = function(self, newText)
+                                        TextLabel.Text = newText
+                                    end
+                                }
                             
                                 return labelObject
                             end
+
 
 
                             function ItemHandling:Credit(creditWho)
