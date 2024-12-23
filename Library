@@ -1011,13 +1011,13 @@ function Luxt1.CreateWindow(libName, logoId)
                                 UICorner.CornerRadius = UDim.new(0, 5)
                                 UICorner.Parent = TextLabel
                             
-                                -- Return an object with the TextLabel and a Set method
-                                return {
-                                    TextLabel = TextLabel,
-                                    Set = function(self, newText)
-                                        self.TextLabel.Text = newText
-                                    end
-                                }
+                                local labelObject = {}
+                            
+                                function labelObject:Set(newText)
+                                    TextLabel.Text = newText
+                                end
+                            
+                                return labelObject
                             end
 
 
